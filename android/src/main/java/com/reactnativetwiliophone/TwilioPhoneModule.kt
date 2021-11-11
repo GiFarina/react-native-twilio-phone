@@ -325,10 +325,10 @@ class TwilioPhoneModule(reactContext: ReactApplicationContext) :
 
       override fun onConnected(call: Call) {
         Log.d(tag, "Call did connect")
-
+        
         val params = Arguments.createMap()
         params.putString("callSid", call.sid)
-
+        activeCalls[call.sid!!] = call
         sendEvent(reactApplicationContext, "CallConnected", params)
       }
 

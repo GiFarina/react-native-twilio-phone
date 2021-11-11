@@ -316,7 +316,7 @@ extension TwilioPhone: CallDelegate {
     
     func callDidConnect(call: Call) {
         NSLog("[TwilioPhone] Call did connect")
-        
+        activeCalls[call.sid] = call
         if hasListeners {
             sendEvent(withName: "CallConnected", body: ["callSid": call.sid])
         }
